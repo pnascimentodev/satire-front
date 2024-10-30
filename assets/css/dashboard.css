@@ -1,0 +1,384 @@
+/* Fundo com gradiente */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #7f5bcb, #cccbcc);
+    color: #333;
+    overflow-x: hidden;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 25px; /* Remova o padding para o cabeçalho ser fino */
+    background-color: #ffffff;
+    box-shadow: none; /* Remove a sombra para um visual mais limpo */
+    height: 30px; /* Define uma altura fixa muito baixa */
+    overflow: hidden; /* Esconde partes que ultrapassam a altura */
+}
+
+header .logo {
+    width: auto; /* Mantém a largura proporcional */
+    height: 150px; /* Manter a altura total do cabeçalho */
+    max-height: none; /* Remove a restrição de altura máxima */
+    transition: transform 0.3s ease;
+    object-fit: contain; /* Ajusta a imagem para caber na altura */
+    transform: scale(1.2); /* Aumenta a logo em 20% */
+    transform-origin: center; /* Mantém a escala centrada */
+}
+
+header .logo:hover {
+    transform: scale(1.1); /* Zoom leve ao passar o mouse */
+}
+
+
+header h1 {
+    font-size: 18px; /* Ajusta o tamanho da fonte do título */
+    font-family: "Inter", sans-serif;
+    color: #5c2eb6;
+    margin: 0; /* Remove margem para melhor alinhamento */
+}
+
+
+.user-menu{
+    display: flex;
+    justify-content: end;
+}
+.user-menu a {
+    margin: 0 5px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #4b2192;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    border-radius: 15px; 
+    transition: border-color 0.3s;
+}
+
+.user-menu a:hover {
+    background-color: #7f5bcb;
+    text-decoration: none;
+    
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #5b2eb652;
+    padding: 3px 0;
+}
+
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+}
+
+.main-nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.map-placeholder, .chart-placeholder {
+    width: 100%; 
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #666;
+}
+
+#mapa-emocional h2 {
+    text-align: center; /* Centraliza o texto */
+    color: #5c2eb6; /* Define a cor do texto */
+}
+.map-placeholder {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 dias da semana */
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.day {
+    width: 40px; /* Largura da célula do dia */
+    height: 40px; /* Altura da célula do dia */
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 20px;
+    color: black;
+}
+
+.has-emotion {
+    background-color: green; /* Cor para datas com registros de emoção */
+}
+
+.no-emotion {
+    background-color: lightgray; /* Cor para datas sem registros de emoção */
+}
+
+.month-navigation {
+    background-color: rgba(74, 33, 146, 0.8); /* Cor da faixa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.month-text {
+    color: white; /* Cor do texto */
+    font-size: 18px; /* Tamanho do texto */
+    margin: 0 10px; /* Margens laterais */
+}
+
+.nav-button {
+    background: none; /* Sem fundo */
+    border: none; /* Sem borda */
+    color: white; /* Cor do texto */
+    font-size: 18px; /* Tamanho do texto */
+    cursor: pointer; /* Cursor de ponteiro */
+    margin: 0 5px; /* Margens laterais */
+}
+
+.nav-button:hover {
+    opacity: 0.8; /* Opacidade ao passar o mouse */
+}
+
+
+
+.sidebar {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.emotion-form, .recent-activities {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Estilizando os labels */
+.emotion-form label {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #5c2eb6;
+    margin: 10px 0 5px;
+    text-align: center;
+}
+
+.emotion-buttons {
+    display: flex;
+    justify-content: space-between; /* Alinha os botões horizontalmente */
+    margin-top: 10px;
+}
+
+.emotion-button {
+    flex: 1; /* Faz com que todos os botões tenham a mesma largura */
+    margin: 0 5px; /* Espaço entre os botões */
+    padding: 10px; /* Ajuste do espaço interno */
+    border: none; /* Remove bordas */
+    background: none; /* Remove fundo */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    font-size: 14px; /* Ajuste de tamanho da fonte */
+    display: flex; /* Para alinhar ícone e texto */
+    flex-direction: column; /* Alinha ícone e texto verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+}
+
+.emotion-button i {
+    font-size: 24px; /* Tamanho do ícone */
+}
+
+.emotion-button span {
+    margin-top: 5px; /* Espaçamento entre o ícone e o título */
+    text-align: center; /* Centraliza o texto abaixo do ícone */
+}
+
+.relaxed { color: #9b9a9a; } /* Cor personalizada */
+.happy { color: #44bd60; }
+.very-happy { color: #12cc2b; }
+.in-love { color: #e435af; }
+.sad { color: #1bb6e6; }
+.very-sad { color: #1e21e2; }
+.angry { color: #f82c3d; }
+
+.emotion-form {
+    width: 100%;
+    max-width: 500px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+
+
+.emotion-form h3 {
+    color: #5c2eb6;
+    font-family: "Inter", sans-serif;
+    text-align: center;
+}
+
+input, select, textarea {
+    width: 90%;
+    padding: 12px;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    line-height: 1.5;
+}
+
+.intensity-container {
+    display: flex;
+    justify-content: center; /* Centraliza os botões */
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-bottom: 10px;
+}
+
+.intensity-btn {
+    padding: 8px 20px;
+    background-color: #4a2192ce;
+    color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.intensity-btn:hover {
+    background-color: #3b1e79;
+}
+
+.intensity-btn.active {
+    background-color: #7f5bcb;
+    color: #fff;
+}
+
+
+.register-emotion-btn {
+    background-color: #5c2eb6;
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+}
+
+.register-emotion-btn:hover {
+    background-color: #4b2192;
+}
+
+.recent-activities h3{
+    color: #5c2eb6;
+    font-family: "Inter", sans-serif;
+    text-align: center;
+}
+
+.recent-activities{
+    width: 93%;
+    max-width: 500px;
+}
+.recent-activities ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-activities li {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.icon-sos {
+    color: #4b2192; /* Cor do ícone */
+    margin-right: 5px; /* Espaçamento à direita do ícone */
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+.icon-sos:hover{
+    color: #7f5bcb;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Empilha o cabeçalho em telas menores */
+        align-items: flex-start; /* Alinha itens à esquerda */
+    }
+
+    .main-nav {
+        flex-direction: column; /* Empilha os itens de navegação */
+        align-items: center; /* Centraliza os itens */
+    }
+
+    .card, .sidebar {
+        width: 100%; /* Cartões e sidebar ocupam 100% da largura */
+        margin-right: 0; /* Remove a margem direita */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 16px; /* Reduz o tamanho da fonte do título */
+    }
+
+    .user-menu a {
+        font-size: 12px; /* Reduz o tamanho da fonte do menu do usuário */
+    }
+
+    .intensity-btn {
+        padding: 6px 15px; /* Ajusta o padding dos botões */
+    }
+
+    input, select, textarea {
+        font-size: 14px; /* Reduz o tamanho da fonte dos campos de entrada */
+    }
+}
