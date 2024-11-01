@@ -56,19 +56,24 @@
             
             
 
-            <!-- Gráfico de Emoções -->
+            <!-- Seção onde o gráfico será exibido -->
             <section id="grafico-emocoes" class="card">
                 <h2>Gráficos de Emoções</h2>
-                <p>Veja a intensidade e frequência das emoções registradas.</p>
-                <div class="chart-placeholder">[Gráficos de Emoções Aqui]</div>
+                <p>Veja a intensidade e frequência das emoções registradas nos últimos 30 dias.</p>
+                <canvas class="chart-placeholder"></canvas> <!-- Gráfico renderizado aqui -->
             </section>
+
+            <!-- Adiciona o script do Chart.js -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="../services/fetchEmotion.js"></script>
+            
 
             <!-- Painel Lateral -->
             <aside class="sidebar">
                 <!-- Registro de Emoção -->
                 <div class="emotion-form">
                     <h3>Registrar Emoção</h3>
-                    <form>
+                    <form id="emotionForm">
                         <label for="emotion">Como se sentiu hoje?</label>
                         <div class="emotion-buttons">
                             <button type="button" class="emotion-button relaxed" data-emotion="Relaxado">
@@ -102,6 +107,20 @@
 
                         
                         <button type="submit" class="register-emotion-btn">Registrar Emoção</button>
+                        <script src="../services/dashboard.js"></script>
+                        <div class="popup-success" id="popupSuccess">
+                            <div class="popup-content">
+                                <span class="close-btn" onclick="closePopup()">&times;</span>
+                                <div class="checkmark-animation">
+                                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                        <circle class="checkmark-circle" cx="26" cy="26" r="25" />
+                                        <path class="checkmark-stem" d="M15 27l7 7 15-15" />
+                                    </svg>
+                                </div>                                
+                                <p>Emoção registrada com sucesso!</p>
+                            </div>
+                        </div>
+                        
                     </form>
                 </div>
 
