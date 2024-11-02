@@ -1,18 +1,34 @@
-// Suponha que você tenha um array de datas com registros de emoção
-const emotionRecords = [
-    '2024-10-01', 
-    '2024-10-05', 
-    '2024-10-10',
-    '2024-10-11',
-    '2024-10-13',
-    '2024-10-25',
-];
+// Captura a data atual
+const today = new Date();
+let currentMonthIndex = today.getMonth(); // Mês atual (0 = Janeiro)
+let currentYear = today.getFullYear(); // Ano atual
 
-let currentMonthIndex = 9; // Outubro (0 = Janeiro)
-let currentYear = 2024;
+// Função para buscar registros de emoções a partir da API
+async function fetchEmotionRecords(year, month) {
+    const token = localStorage.getItem('token');
+
+    try {
+        const response = await fetch(`http://localhost:3000/emotions/by-date?year=${year}&month=${month}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao buscar emoções');
+        }
+
+        const data = await response.json();
+        return data.emotionDates || []; // Retorna as datas das emoções ou um array vazio
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+        return []; // Retorna um array vazio em caso de erro
+    }
+}
 
 // Função para criar o mapa emocional
-function createEmotionalMap() {
+async function createEmotionalMap() {
     const mapContainer = document.getElementById('emotional-map');
     mapContainer.innerHTML = ''; // Limpa o mapa antes de desenhar novamente
 
@@ -20,6 +36,9 @@ function createEmotionalMap() {
     const firstDay = new Date(currentYear, currentMonthIndex, 1);
     const lastDay = new Date(currentYear, currentMonthIndex + 1, 0);
     
+    // Busca registros de emoções para o mês atual
+    emotionRecords = await fetchEmotionRecords(currentYear, currentMonthIndex + 1); // Mês é zero-indexado
+
     // Loop pelas datas do mês
     for (let day = 1; day <= lastDay.getDate(); day++) {
         const currentDate = new Date(currentYear, currentMonthIndex, day);
@@ -33,7 +52,7 @@ function createEmotionalMap() {
     }
     
     // Atualiza a exibição do mês atual
-    updateMonthDisplay(); // Atualiza o mês exibido aqui
+    updateMonthDisplay(); // Atualiza o texto do mês exibido
 }
 
 // Atualiza o texto do mês exibido

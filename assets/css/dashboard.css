@@ -128,15 +128,32 @@ main {
     color: #5c2eb6; /* Define a cor do texto */
 }
 
+#mapa-emocional p {
+    text-align: center; 
+    color: #5c2eb6;
+
+}
+
 #grafico-emocoes h2 {
     text-align: center; /* Centraliza o texto */
     color: #5c2eb6; /* Define a cor do texto */
+}
+
+#grafico-emocoes p {
+    color: #4a229b;
+    text-align: center;
 }
 .map-placeholder {
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* 7 dias da semana */
     gap: 5px;
     margin-top: 10px;
+    background-color: white; /* Fundo branco para o calendário */
+    padding: 10px; /* Adiciona um espaçamento interno */
+    border-radius: 5px; /* Arredonda os cantos do fundo */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 300px; 
+    width: 96%;
 }
 
 .day {
@@ -244,13 +261,13 @@ main {
     text-align: center; /* Centraliza o texto abaixo do ícone */
 }
 
-.relaxed { color: #9b9a9a; } /* Cor personalizada */
-.happy { color: #44bd60; }
-.very-happy { color: #12cc2b; }
-.in-love { color: #e435af; }
-.sad { color: #1bb6e6; }
-.very-sad { color: #1e21e2; }
-.angry { color: #f82c3d; }
+.relaxed { color: #FF7F50; } /* Coral */
+.happy { color: #21a082; } /* Verde pastel */
+.very-happy { color: #008000; } /* Verde */
+.in-love { color: #FF6384; } /* Rosa */
+.sad { color: #9966FF; } /* Azul */
+.very-sad { color: #36A2EB; } /* Azul mais escuro */
+.angry { color: #FF0000; } /* Marrom */
 
 .emotion-button.selected { /* Ajuste conforme o design desejado */
     border: 2px solid #5c2eb6;

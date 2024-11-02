@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', async () => {
+// Função para buscar e renderizar as emoções
+async function fetchAndRenderEmotions() {
     const token = localStorage.getItem('token');
 
     if (!token) {
@@ -23,15 +24,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error('Erro na requisição:', error);
     }
-});
+}
 
+// Chama a função ao carregar a página
+document.addEventListener('DOMContentLoaded', fetchAndRenderEmotions);
+
+// Função para renderizar o gráfico de emoções
 function renderEmotionChart(emotionCounts) {
     const labels = Object.keys(emotionCounts);
     const counts = Object.values(emotionCounts);
 
     const ctx = document.querySelector('.chart-placeholder').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar', // Troque para 'pie' se preferir um gráfico de pizza
+
+    // Limpa o gráfico existente antes de desenhar um novo
+    if (window.emotionChart) {
+        window.emotionChart.destroy();
+    }
+
+    // Cria um novo gráfico e armazena em uma variável global para reutilização
+    window.emotionChart = new Chart(ctx, {
+        type: 'pie', // Troque para 'pie' se preferir um gráfico de pizza
         data: {
             labels: labels,
             datasets: [{

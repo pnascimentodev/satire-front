@@ -44,7 +44,8 @@
             const data = await response.json();
     
             if (response.ok) {
-                openPopup(); // Abre o pop-up de sucesso
+                openPopup();
+                await fetchAndRenderEmotions();
             } else {
                 alert(`Erro: ${data.message}`);
             }
@@ -74,6 +75,8 @@
     
         // Oculta o pop-up
         document.getElementById('popupSuccess').style.display = 'none';
+
+        fetchAndRenderEmotions();
     }
     
     
